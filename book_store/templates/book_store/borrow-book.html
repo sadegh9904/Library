@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Borrow a Book!
+{% endblock  %}
+
+{% block content %}
+
+    {% if is_available == True %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as.p }}
+        <button type="submit">Borrow</button>
+    </form>
+    {% else %}
+        <p>This Book is unavailable for borrowing now.<br/>
+            please choose another Book!</p>
+    {% endif %}
+
+{% endblock  %}
