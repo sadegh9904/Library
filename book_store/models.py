@@ -17,9 +17,8 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     is_available = models.BooleanField(default=True)
     slug = models.SlugField(unique=True, db_index=True)
-    borrower = models.ForeignKey(Borrower, verbose_name=("borrowed_books"), on_delete=models.SET_NULL,null=True,blank=True)
+    borrowed_books = models.ForeignKey(Borrower, verbose_name=("borrowed_books"), on_delete=models.SET_NULL,null=True,blank=True)
 
     def __str__(self):
         return self.title
-
 
