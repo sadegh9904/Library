@@ -5,9 +5,12 @@
 
 
 {% block content %}
-
-    {% for book in books %}
-        {% include "book_store/includes/book.html" %}
-    {% endfor %}
+    <div>
+        <h1>Book List</h1>
+        <a href="{% url "add-book" %}">Add New Book</a>
+        {% for book in books %}
+            {% include "book_store/includes/book.html" %}
+        {% endfor %}
+    </div>
     
 {% endblock  %}

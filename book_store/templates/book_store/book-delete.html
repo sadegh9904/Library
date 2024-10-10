@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Delete Book
+{% endblock  %}
+
+{% block content %}
+    <p>Warning ! <br/>
+        This Book will not be returned</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <h4>Sure?!</h4>
+        <button>Yes</button>
+        <div>
+            <a href="{% url "book-list" %}">No</a>
+        </div>
+{% endblock  %}

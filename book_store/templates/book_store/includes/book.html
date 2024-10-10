@@ -3,11 +3,20 @@
        <a href="" {% url "" %}>
         <div>
             <h2>
-                {{ book.title }}
+                Title : {{ book.title }}
             </h2>
             <p>
-                {{ book.author }}
+                Author : {{ book.author }}
             </p>
+            {% if book.is_available == True %}
+            <strong>
+                Available
+            </strong>
+            {% else %}
+            <strong>
+                Not Available
+            </strong>
+            {% endif %}
         </div>
        </a> 
     </article>
