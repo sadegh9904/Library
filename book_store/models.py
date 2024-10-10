@@ -22,3 +22,11 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
+
+
+class Borrow(models.Model):
+    balance = 
+    book = 
+    date_borrowed = 
+    pass

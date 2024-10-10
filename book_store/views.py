@@ -48,13 +48,14 @@ class BorrowerCreateView(CreateView):
     form_class = Borrower
     template_name = ".html"
     success_url = 
-
+    pass
 
 class BorrowerUpdateView(UpdateView):
     model = Borrower
     form_class = BorrowerForm
     template_name = ".html"
     success_url = 
+    pass
 
 
 class BorrowerDeleteView(DeleteView):
@@ -62,3 +63,4 @@ class BorrowerDeleteView(DeleteView):
     form_class = BorrowerForm
     template_name = ".html"
     success_url = 
+    pass
