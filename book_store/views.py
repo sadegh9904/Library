@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views import views
 from django.views.generic import ListView,UpdateView,DeleteView
 from django.views.generic.edit import CreateView
-from .models import Borrower,Book
-from .forms import BookForm,BorrowerForm
+from .models import User,Book
+from .forms import BookForm,UserForm
 # Create your views here.
 
 
@@ -38,29 +38,29 @@ class BookDeleteView(DeleteView):
 
 
 class BorrowerListView(ListView):
-    model = Borrower
+    model = User
     template_name = ".html"
 
 
 
 class BorrowerCreateView(CreateView):
-    model = Borrower
-    form_class = Borrower
+    model = User
+    form_class = UserForm
     template_name = ".html"
     success_url = 
     pass
 
 class BorrowerUpdateView(UpdateView):
-    model = Borrower
-    form_class = BorrowerForm
+    model = User
+    form_class = UserForm
     template_name = ".html"
     success_url = 
     pass
 
 
 class BorrowerDeleteView(DeleteView):
-    model = Borrower
-    form_class = BorrowerForm
+    model = User
+    form_class = UserForm
     template_name = ".html"
     success_url = 
     pass

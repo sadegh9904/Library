@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book,Borrower
+from .models import Book,User
 
 class BookForm(forms.ModelForm):
     class Meta:
@@ -7,7 +7,7 @@ class BookForm(forms.ModelForm):
         exclude = ["borrower"]
 
 
-class BorrowerForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
-        model = Borrower
+        model = User
         fields = "__all__"
