@@ -9,7 +9,7 @@
     {% if is_available == True %}
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form.as.p }}
+        {{ form.as_p }}
         <button type="submit">Borrow</button>
     </form>
     {% else %}

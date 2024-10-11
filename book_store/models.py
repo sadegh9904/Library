@@ -9,6 +9,7 @@ class User(models.Model):
     balance = models.IntegerField(default=0)
 
     def __str__(self):
+        
         return self.name
 
 
@@ -17,7 +18,6 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     is_available = models.BooleanField(default=True)
     slug = models.SlugField(unique=True, db_index=True)
-    borrowed_books = models.ForeignKey(User, verbose_name=("borrowed_books"), on_delete=models.SET_NULL,null=True,blank=True)
 
     def __str__(self):
         return self.title
@@ -26,7 +26,10 @@ class Book(models.Model):
 
 
 class Borrow(models.Model):
-    balance = 
-    book = 
-    date_borrowed = 
-    pass
+    user = models.ForeignKey(User, verbose_name=("user"), on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, verbose_name=("book"), on_delete=models.CASCADE)
+    borrow_date = models.DateField(auto_now_add=True)
+    return_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.name} borrowed {self.book.title}"

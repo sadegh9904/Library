@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import views
+from django.utils import timezone
 from django.views.generic import ListView,UpdateView,DeleteView
-from django.views.generic.edit import CreateView
-from .models import User,Book
+from django.views.generic.edit import CreateView,FormView
+from .models import User,Book,Borrow
 from .forms import BookForm,UserForm
 # Create your views here.
 
@@ -11,6 +12,7 @@ class BookListView(ListView):
     model = Book
     template_name = "book_store/book-list.html"
     context_object_name = "books"
+    ordering = ["-date"]
 
 
 
@@ -37,30 +39,33 @@ class BookDeleteView(DeleteView):
 
 
 
-class BorrowerListView(ListView):
+class UserprofileView(ListView):
     model = User
     template_name = ".html"
 
 
 
-class BorrowerCreateView(CreateView):
-    model = User
-    form_class = UserForm
-    template_name = ".html"
-    success_url = 
-    pass
-
-class BorrowerUpdateView(UpdateView):
+class BorrowBookView(FormView):
     model = User
     form_class = UserForm
-    template_name = ".html"
-    success_url = 
-    pass
+    template_name = "book_store/book-borrow.html"
+    success_url = "/book-list"
+
+    def form_valid(self, form):
+        book = form.cleaned_data["book"]
+        user = self.request.user
+
+        borrow = Borrow(
+        user=user, book=book, borrow_date = timezone.now(),
+        return_date = timezone.now() + timezone.timedelta(days=10)
+        )
+        
+        borrow.save()
+
+        book.is_available = False
+        book.save()
 
 
-class BorrowerDeleteView(DeleteView):
-    model = User
-    form_class = UserForm
-    template_name = ".html"
-    success_url = 
-    pass
+
+        return super().form_valid(form)
+    
