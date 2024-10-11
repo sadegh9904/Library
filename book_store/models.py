@@ -17,7 +17,7 @@ class Book(models.Model):
     title = models.CharField(max_length=150)
     author = models.CharField(max_length=100)
     is_available = models.BooleanField(default=True)
-    slug = models.SlugField(unique=True, db_index=True)
+    slug = models.SlugField(unique=True, db_index=True,editable=False)
 
     def __str__(self):
         return self.title

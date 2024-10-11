@@ -17,7 +17,7 @@ class UserForm(forms.ModelForm):
 class   BorrowForm(forms.ModelForm):  
     class Meta:
         model = Borrow
-        fields = ("book")
+        fields = ('book',)
 
     def clean_book(self):
         book = self.cleaned_data["book"]

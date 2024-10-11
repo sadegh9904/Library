@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.views import views
+from django.views import View
 from django.utils import timezone
 from django.views.generic import ListView,UpdateView,DeleteView
 from django.views.generic.edit import CreateView,FormView
@@ -12,8 +12,6 @@ class BookListView(ListView):
     model = Book
     template_name = "book_store/book-list.html"
     context_object_name = "books"
-    ordering = ["-date"]
-
 
 
 class BookCreateView(CreateView):
