@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.utils import timezone
 from django.views.generic import ListView,UpdateView,DeleteView
-from django.views.generic.edit import CreateView,FormView
+from django.views.generic.edit import CreateView,
 from .models import User,Book,Borrow
 from .forms import BookForm,UserForm
 # Create your views here.
@@ -43,7 +43,7 @@ class UserprofileView(ListView):
 
 
 
-class BorrowBookView(FormView):
+class BorrowBookView(CreateView):
     model = User
     form_class = UserForm
     template_name = "book_store/book-borrow.html"
