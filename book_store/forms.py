@@ -14,7 +14,7 @@ class UserForm(forms.ModelForm):
 
 
 
-class   BorrowForm(forms.ModelForm):  
+class BorrowForm(forms.ModelForm):  
     class Meta:
         model = Borrow
         fields = ('book',)

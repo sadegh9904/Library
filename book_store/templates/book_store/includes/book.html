@@ -5,19 +5,22 @@
             <h2>
                 Title : {{ book.title }}
             </h2>
+        </a> 
             <p>
                 Author : {{ book.author }}
             </p>
+            <a href="{% url "delete-book" book.pk %}">Delete</a>
+            <a href="{% url "edit-book" book.pk %}">Edit</a>
             {% if book.is_available == True %}
             <strong>
                 Available
             </strong>
+            <a href="{% url "book-borrow" book.pk %}">Borrow</a>
             {% else %}
             <strong>
                 Not Available
             </strong>
             {% endif %}
         </div>
-       </a> 
     </article>
 </li>

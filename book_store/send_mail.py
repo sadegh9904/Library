@@ -9,52 +9,11 @@ EMAIL_HOST_PASSWORD = "qvhszprjfmbinmrd"
 
 msg = EmailMessage()
 
-msg['Subject'] = "Python sender created by Sadegh"
+msg['Subject'] = "Warning"
 msg['From'] = EMAIL_HOST_USER
 msg['To'] = ""
-msg.set_content("Hi babe this is a test mail sended automaticly by python. from TASEKH :) I LOVE YOU soooo muchhh")
+msg.set_content("your deadline is over!")
  
 with smtplib.SMTP_SSL(EMAIL_HOST,EMAIL_HOST_PORT) as server:
     server.login(EMAIL_HOST_USER,EMAIL_HOST_PASSWORD)
     server.send_message(msg)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#"negin.a.hosseini82@gmail.com"

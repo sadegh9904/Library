@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    {% if is_available == True %}
+    {% if is_available %}
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
