@@ -9,11 +9,12 @@
             <p>
                 Author : {{ book.author }}
             </p>
-            <a href="{% url "delete-book" book.pk %}">Delete</a>
-            <a href="{% url "edit-book" book.pk %}">Edit</a>
+            <a href="{% url "edit-book" book.pk %}">Edit</a><br/>
+            <a href="{% url "delete-book" book.pk %}">Delete</a><br/>
+            
             {% if book.is_available == True %}
             <strong>
-                Available
+                Available :
             </strong>
             <a href="{% url "book-borrow" book.pk %}">Borrow</a>
             {% else %}

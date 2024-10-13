@@ -7,11 +7,30 @@
 {% block content %}
     <div>
         <h1>Book List</h1>
+        
+        {% if user.is_authenticated %}
+            <h1>
+                welcome dear {{user.username}}
+            </h1>
+        {% else %}
+                    
+        <strong><a href="{% url "signup" %}">Signup</a><br/></strong>
+        <a href="{% url "login" %}">LOGIN</a><br/><br/>
+        {% endif %}
+
+
         <a href="{% url "add-book" %}">Add New Book</a>
-        <a href="{% url "login" %}">LOGIN</a>
+        
+
         {% for book in books %}
             {% include "book_store/includes/book.html" %}
         {% endfor %}
+        {% if user.is_authenticated %}
+            <form action="/logout/" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %}
     </div>
     
 {% endblock  %}

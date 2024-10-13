@@ -7,8 +7,9 @@ from django.views.generic import ListView,UpdateView,DeleteView,View
 from django.views.generic.edit import CreateView
 from .models import User,Book,Borrow
 from .forms import BookForm,UserForm,BorrowForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user,logout
 from django.contrib.auth.views import LoginView,LogoutView
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib import messages
 # Create your views here.
 
@@ -127,8 +128,8 @@ def borrow_book(request, pk):
             "form":form
         })
 
-    #new i must to delete that view for login and add this one to the urls and see the end
-class LoginPageView(LoginView):
+    #new i have to delete that view for login and add this one to the urls and see the end
+#class LoginPageView(LoginView):
     template_name = "book_store/login.html"
     redirect_authenticated_user = True
     success_url = reverse_lazy("book-list")
@@ -137,3 +138,39 @@ class LoginPageView(LoginView):
         messages.error(self.request, "invalid username or pass")
         return self.render_to_response(self.get_context_data(form=form))
     
+
+def SignupView(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("book-list")
+        return render(request, "book_store/signup.html", {
+            "form":form
+        })
+    
+    form = UserCreationForm()
+
+    return render(request, "book_store/signup.html", {
+        "form":form
+    })
+
+
+def LoginView(request):
+    if request.method == "POST":
+        form = AuthenticationForm(data = request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect("book-list")
+
+    form = AuthenticationForm()
+    return render(request, "book_store/login.html", {
+        "form":form
+    })
+
+def LogoutView(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect("book-list")

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 
-{% block title %}LOGIN{% endblock title %}
+{% block title %}Signup{% endblock title %}
 
 
 {% block content %}
-<h1>Login</h1>
+<h1>Signup</h1>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
@@ -17,7 +17,7 @@
             </ul>
     {% endif %}
     </div>
-    <button typr="submit">Login</button>
+    <button typr="submit">Signup</button>
 </form>
 
 
