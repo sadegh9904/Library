@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 # Create your models here.
 
@@ -24,3 +25,7 @@ class Borrow(models.Model):
 
     def __str__(self):
         return f"{self.user.name} borrowed {self.book.title}"
+    
+    def return_book(self):
+        self.return_date = datetime.now()
+        self.save()

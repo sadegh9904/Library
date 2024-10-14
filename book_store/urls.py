@@ -1,6 +1,6 @@
 from django.urls import path
 from .import views
-from . views import SignupView,LoginView,LogoutView
+from . views import SignupView,LoginView,LogoutView,Home
 
 
 urlpatterns = [
@@ -11,5 +11,5 @@ urlpatterns = [
     path("borrow/<int:pk>",views.borrow_book, name="book-borrow"),
     path("signup/", SignupView, name="signup"),
     path("login/", LoginView, name="login"),
-    path("logout/", LogoutView, name="logout")
+    path("logout/", LogoutView, name="logout"),
 ]
