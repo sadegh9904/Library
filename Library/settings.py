@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'django_celery_results',
-    'django_celey_beat'
+    
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -141,10 +140,10 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_DEFAULT_QUEUE = 'default'
 
 CELERY_BEAT_SCHEDULE = {
-    "my_task": {
+    "check_borrowed_books": {
         "task": 
-        "appname.tasks.my_tasks", 
+        "book_store.tasks.check_books", 
         "schedule" : crontab(
-            hour = 8, minute = 0)
+            hour = 0, minute = 0)
     }
 }

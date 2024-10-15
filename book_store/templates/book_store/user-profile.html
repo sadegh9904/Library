@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} {{user.username}}'s Profile{% endblock  %}
+
+
+
+{% block content %}
+    <div>
+        <h1>profile user</h1>
+        <h2>Welcome dear {{ user.username }}
+        <h3>Your Borrow Books :</h3>
+        <ol>
+            {% for borrow in borrows %}
+                <li>
+                    <strong>Book : {{ borrow.book.title }}</strong><br />
+                    <strong>Borrow Date : {{ borrow.borrow_date }}</strong><br />
+                    <strong>Return Date : 
+                        {% if borrow.return_date %}
+                            {{ borrow.return_date }}</strong><br />
+
+                        {% else %}
+                            Not Returned
+                        {% endif %}
+
+                    {% if borrow.return_date == None %}
+                        <form action="{% url "return-book" borrow.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Return Book</button>
+                        </form>
+                    {% endif %}
+                </li>
+            
+            {% endfor %}
+        </ol>
+        <button><a href="{% url "book-list" %}">Back</a></button>
+    </div>
+{% endblock  %}

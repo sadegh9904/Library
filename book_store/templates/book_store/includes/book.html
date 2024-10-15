@@ -1,24 +1,23 @@
 <li>
     <article>
-       <a href="" {% url "book-list" %}>
         <div>
             <h2>
                 Title : {{ book.title }}
             </h2>
-        </a> 
             <p>
                 Author : {{ book.author }}
             </p>
             <a href="{% url "edit-book" book.pk %}">Edit</a><br/>
             <a href="{% url "delete-book" book.pk %}">Delete</a><br/>
             
-            {% if book.is_available == True %}
+            {% if book.is_available %}
             <strong>
                 Available :
             </strong>
             <a href="{% url "book-borrow" book.pk %}">Borrow</a>
             {% else %}
             <strong>
+                
                 Not Available
             </strong>
             {% endif %}

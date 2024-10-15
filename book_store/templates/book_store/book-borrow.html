@@ -5,13 +5,22 @@
 {% endblock  %}
 
 {% block content %}
-
-    {% if is_available %}
+<!-- this is for that if anyone search the slug for example searching 
+ borrow/1 this show us that's unavailable -->
+    {% if is_available %} 
+    <h2> {{book.title}}</h2>  
+    <p>You will borrow this book in ten days,so please return it at the specified time</p>
+    <h4>have a good time with this book!</h4>
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Borrow</button>
     </form>
+    <h4>Warning !<br/>
+        if you don't return that at the specified time ;<br/>
+        you owe us</h4>
+<br/>
+    <button><a href="{% url "book-list" %}">Back</a></button>
     {% else %}
         <p>This Book is unavailable for borrowing now.<br/>
             please choose another Book!</p>

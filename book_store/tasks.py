@@ -16,10 +16,10 @@ EMAIL_HOST_PASSWORD = "qvhszprjfmbinmrd"
 @shared_task
 def check_books():
 
-    ten_days_ago = timezone.now() - timedelta(days=10)
+    ten_days_ago = timezone.now() - timedelta(hours=6)
 
     borrows = Borrow.objects.filter(
-        borrow_date__gte=ten_days_ago,returned = False)
+        borrow_date__gte=ten_days_ago, return_date__isnull = True )
     
     for borrow in borrows:
         user_email = borrow.user.email

@@ -12,6 +12,7 @@
             <h1>
                 welcome dear {{user.username}}
             </h1>
+            <strong><a href="{% url "profile-user" %}">Your Profile</a><br/></strong>
         {% else %}
                     
         <strong><a href="{% url "signup" %}">Signup</a><br/></strong>

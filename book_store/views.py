@@ -59,9 +59,10 @@ def borrow_book(request, pk):
             borrow.user = request.user
 
             borrow.borrow_date = timezone.now()
-            borrow.return_date = timezone.now() + timezone.timedelta(days=10)
+            borrow.return_date = None
+            
+            book.is_available = False
             borrow.save()
-            book.is_available == False
             book.save()
             return redirect("book-list")
         else :
@@ -139,9 +140,33 @@ def borrow_book(request, pk):
         return self.render_to_response(self.get_context_data(form=form))
     
 
+def ProfileUser(request):
+    borrows = Borrow.objects.filter(user = request.user)
+    return render(request, "book_store/user-profile.html", {
+        "borrows":borrows
+    })
+
+
+
+def Return_book(request, pk):
+    borrow = get_object_or_404(Borrow, pk=pk)
+
+    if borrow.user == request.user:
+        borrow.return_book()
+
+        book = borrow.book
+        book.is_available = True
+        book.save()
+
+        return redirect("profile-user")
+    else:
+        return redirect("book-list")
+    
+
+
 def SignupView(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -150,7 +175,7 @@ def SignupView(request):
             "form":form
         })
     
-    form = UserCreationForm()
+    form = UserForm()
 
     return render(request, "book_store/signup.html", {
         "form":form
