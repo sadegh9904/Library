@@ -14,26 +14,31 @@ class LoginMiddlawere:
         if match:
             pk = match.group(1)
         checklist = [
-            reverse('book:book-create'),
-            reverse('book:book-list'),
-            reverse('book:book-update',args=[pk]),
-            reverse('book:book-delete', args=[pk]),
+            reverse('add-book'),
+            reverse('book-list'),
+            reverse('edit-book',args=[pk]),
+            reverse('delete-book', args=[pk]),
 
-            reverse('book:user-profile', args=[pk]),
+
         ]
 
         customusers = [
-            reverse('book:user-profile'),
-            reverse('book:book-borrow', args=[pk]),
+            reverse('profile-user'),
+            reverse('book-list'),
+            reverse('book-borrow', args=[pk]),
         ]
 
     
         if not request.user.is_superuser and request.path in checklist:
-            return redirect('book:login')
+            return redirect('login')
         
         if not request.user.is_authenticated and request.path in customusers:
             messages.error(request, "You should Login first !", "Warning!")
-            return redirect('book:login')
+            return redirect('signup')
+        
+        if request.path == reverse('login'):
+            response = self.get_response(request)
+            return response
 
 
         response = self.get_response(request)

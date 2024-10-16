@@ -3,6 +3,7 @@ from .import views
 from . views import SignupView,LoginView,LogoutView,ProfileUser,Return_book
 
 
+
 urlpatterns = [
     path("",views.BookListView.as_view(), name="book-list"),
     path("add/",views.BookCreateView.as_view(),name="add-book"),
