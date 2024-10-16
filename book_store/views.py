@@ -189,6 +189,7 @@ def LoginView(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+            print(f"User {user.username} login succsesfully")
             return redirect("book-list")
 
     form = AuthenticationForm()

@@ -17,6 +17,10 @@ class LoginMiddlawere:
         match = re.search(r"\/(\d+)\/", request.path)
         if match:
             pk = match.group(1)
+
+        if request.user.is_authenticated and request.path == reverse('login'):
+            print(f"Authenticated user {request.user.username} trying to access login page. Redirecting to book-list.")
+            return redirect('book-list')
         checklist = [
             reverse('add-book'),
             reverse('book-list'),
@@ -38,11 +42,7 @@ class LoginMiddlawere:
         
         if not request.user.is_authenticated and request.path in customusers:
             messages.error(request, "You should Login first !", "Warning!")
-            return redirect('signup')
-        
-        if request.path == reverse('login'):
-            response = self.get_response(request)
-            return response
+            return redirect('login')
 
 
         response = self.get_response(request)
