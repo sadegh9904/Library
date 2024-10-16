@@ -149,3 +149,5 @@ CELERY_BEAT_SCHEDULE = {
             hour = 0, minute = 0)
     }
 }
+
+AUTH_USER_MODEL = 'book_store.CustomUser'
