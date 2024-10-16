@@ -9,6 +9,10 @@ class LoginMiddlawere:
         self.get_response = get_response
 
     def __call__(self, request):
+
+        print(f"Request Path: {request.path}")  
+        print(f"Is Authenticated: {request.user.is_authenticated}")  
+        print(f"User: {request.user}")
         pk = "2"
         match = re.search(r"\/(\d+)\/", request.path)
         if match:

@@ -1,9 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Create a Book
 {% endblock  %}
 
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "book_store/forms.css" %}"/>
+{% endblock  %}
 
 
 {% block content %}

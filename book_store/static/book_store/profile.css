@@ -1,0 +1,24 @@
+#welcome {
+    background: linear-gradient(to right top, #6305dd, #390281);
+    padding: 6rem 12%;
+  }
+
+#welcome h2 {
+    font-size: 3.5rem;
+    margin: 0 0 0 2rem;
+    color: #b9d8c9;
+    width: 10rem;
+}
+
+#welcome a {
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #5c002e;
+    border: 1px solid #5c002e;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+}
