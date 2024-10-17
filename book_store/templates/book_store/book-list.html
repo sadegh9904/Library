@@ -25,9 +25,11 @@
         <a href="{% url "login" %}">LOGIN</a><br/><br/>
         {% endif %}
 
+        {% if user.is_superuser %}
 
-        <a href="{% url "add-book" %}">Add New Book</a>
-        
+            <a href="{% url "add-book" %}">Add New Book</a>
+
+        {% endif %}
         <ul>
         {% for book in books %}
             {% include "book_store/includes/book.html" %}

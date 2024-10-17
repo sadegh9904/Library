@@ -2,41 +2,41 @@ from typing import Any
 from django.shortcuts import redirect
 from django.urls import reverse
 import re
-from django.contrib import messages
 
 class LoginMiddlawere:
     def __init__(self,get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-
-        print(f"Request Path: {request.path}")  
-        print(f"Is Authenticated: {request.user.is_authenticated}")  
-        print(f"User: {request.user}")
-        pk = "2"
+        pk = "4"
+        match = "11"
         match = re.search(r"\/(\d+)\/", request.path)
         if match:
             pk = match.group(1)
 
-        checklist = [
+
+#The list of routes(paths) that only superusrs have access to
+        superuser_paths = [
             reverse('add-book'),
             reverse('edit-book',args=[pk]),
             reverse('delete-book', args=[pk]),
-
-
         ]
 
-        customusers = [
+
+#The list of routes(paths) that only autenticated users have to access
+        customuser_paths = [
             reverse('profile-user'),
             reverse('book-borrow', args=[pk]),
         ]
 
-    
-        if not request.user.is_superuser and request.path in checklist:
+
+#check if the user isn't a superuser and trying to access superuser_paths ! 
+        if not request.user.is_superuser and request.path in superuser_paths:
             return redirect('login')
         
-        if not request.user.is_authenticated and request.path in customusers:
-            messages.error(request, "You should Login first !", "Warning!")
+
+#chek if the user isn't authenticated and tyring to access customuser_paths !        
+        if not request.user.is_authenticated and request.path in customuser_paths:
             return redirect('login')
 
 

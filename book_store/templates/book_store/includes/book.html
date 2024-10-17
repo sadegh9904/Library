@@ -8,10 +8,14 @@
                 Author : {{ book.author }}
             </p>
 
+            {% if user.is_superuser %}
+
             <div class="link">
             <a class="book" href="{% url "edit-book" book.pk %}">Edit</a><br/>
             <a class="book" href="{% url "delete-book" book.pk %}">Delete</a><br/>
             </div>
+
+            {% endif %}
 
             {% if book.is_available %}
             <strong class="text1">
