@@ -1,0 +1,51 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+  
+form {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 30rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+  
+button {
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    background-color: #f0f0f0;
+    color: white;
+    border: 1px solid #dadada;
+    width: 160px;
+}
+  
+  button:hover,
+  button:active {
+    background-color: #a7ded291;
+    border-color: #ffffff;
+    transition: 0.9s;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-size: medium;
+}
+
+label{
+    display: block;
+    margin-bottom: 8px;
+}

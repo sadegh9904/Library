@@ -57,6 +57,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Library.urls'
 
+LOGIN_REDIRECT_URL = '/book-list/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -108,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -124,6 +127,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS =[
+    BASE_DIR / "static"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -146,6 +153,8 @@ CELERY_BEAT_SCHEDULE = {
         "task": 
         "book_store.tasks.check_books", 
         "schedule" : crontab(
-            hour = 0, minute = 0)
+            hour = 6, minute = 0)
     }
 }
+
+AUTH_USER_MODEL = 'book_store.CustomUser'

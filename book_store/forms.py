@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book,User,Borrow
+from .models import Book,CustomUser,Borrow
 from django.contrib.auth.forms import UserCreationForm
 
 class BookForm(forms.ModelForm):
@@ -11,7 +11,7 @@ class BookForm(forms.ModelForm):
 class UserForm(UserCreationForm):
     email = forms.EmailField(required=True)
     class Meta:
-        model = User
+        model = CustomUser
         fields = ["username","email", "password1", "password2"]
 
 

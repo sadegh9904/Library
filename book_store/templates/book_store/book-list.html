@@ -1,17 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}All Books{% endblock  %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "book_store/book-list.css" %}"/>
+    <link rel="stylesheet" href="{% static "book_store/book.css" %}"/>
+{% endblock  %}
 
 
 
 {% block content %}
-    <div>
+    <div id="all-books">
         <h1>Book List</h1>
         
         {% if user.is_authenticated %}
-            <h1>
+            <h3>
                 welcome dear {{user.username}}
-            </h1>
+            </h3>
             <strong><a href="{% url "profile-user" %}">Your Profile</a><br/></strong>
         {% else %}
                     
@@ -19,13 +25,16 @@
         <a href="{% url "login" %}">LOGIN</a><br/><br/>
         {% endif %}
 
+        {% if user.is_superuser %}
 
-        <a href="{% url "add-book" %}">Add New Book</a>
-        
+            <a href="{% url "add-book" %}">Add New Book</a>
 
+        {% endif %}
+        <ul>
         {% for book in books %}
             {% include "book_store/includes/book.html" %}
         {% endfor %}
+        </ul>
         {% if user.is_authenticated %}
             <form action="/logout/" method="post">
                 {% csrf_token %}

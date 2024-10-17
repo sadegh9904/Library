@@ -1,0 +1,53 @@
+body {
+    background-color: #e7e7e7;
+}
+
+#all-books {
+    margin: 7rem auto;
+    width: 90%;
+    max-width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#all-books h1{
+    text-align: center;
+    color: #2e2e2e;
+    font-size: 3rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #75df64;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+#all-books h3{
+    text-align: center;
+    color: #2e2e2e;
+    font-size: 2rem;
+    max-width: 20%;
+    margin: 2rem auto;
+    padding: 2rem ;
+    background-color: #75df64;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#all-books a{
+    margin: auto;
+    margin-top: 1rem;
+}
+
+ul {
+    list-style: none;
+    margin: 1rem;
+    padding: 0rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 5.5rem;
+}

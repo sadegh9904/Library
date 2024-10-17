@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
 from django.views.generic import ListView,UpdateView,DeleteView,View
 from django.views.generic.edit import CreateView
-from .models import User,Book,Borrow
+from .models import CustomUser,Book,Borrow
 from .forms import BookForm,UserForm,BorrowForm
 from django.contrib.auth import authenticate, login, get_user,logout
 from django.contrib.auth.views import LoginView,LogoutView
@@ -43,7 +43,7 @@ class BookDeleteView(DeleteView):
 
 
 class UserprofileView(ListView):
-    model = User
+    model = CustomUser
     template_name = ".html"
 
 
@@ -153,6 +153,7 @@ def Return_book(request, pk):
 
     if borrow.user == request.user:
         borrow.return_book()
+        borrow.calculate_late()
 
         book = borrow.book
         book.is_available = True
@@ -188,6 +189,7 @@ def LoginView(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+            print(f"User {user.username} login succsesfully")
             return redirect("book-list")
 
     form = AuthenticationForm()

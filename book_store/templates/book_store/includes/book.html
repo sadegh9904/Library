@@ -1,4 +1,4 @@
-<li>
+<li class="book">
     <article>
         <div>
             <h2>
@@ -7,16 +7,25 @@
             <p>
                 Author : {{ book.author }}
             </p>
-            <a href="{% url "edit-book" book.pk %}">Edit</a><br/>
-            <a href="{% url "delete-book" book.pk %}">Delete</a><br/>
-            
+
+            {% if user.is_superuser %}
+
+            <div class="link">
+            <a class="book" href="{% url "edit-book" book.pk %}">Edit</a><br/>
+            <a class="book" href="{% url "delete-book" book.pk %}">Delete</a><br/>
+            </div>
+
+            {% endif %}
+
             {% if book.is_available %}
-            <strong>
-                Available :
+            <strong class="text1">
+                Available 
             </strong>
-            <a href="{% url "book-borrow" book.pk %}">Borrow</a>
+            <div class="link">
+            <a class="book" href="{% url "book-borrow" book.pk %}">Borrow</a>
+            </div>
             {% else %}
-            <strong>
+            <strong class="text2">
                 
                 Not Available
             </strong>

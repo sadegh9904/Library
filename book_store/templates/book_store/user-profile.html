@@ -1,13 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %} {{user.username}}'s Profile{% endblock  %}
-
+{% block css_files %}
+<link rel="stylesheet" href="{% static "book_store/profile.css" %}"/>
+{% endblock css_files %}
 
 
 {% block content %}
-    <div>
+    <div id="welcome">
         <h1>profile user</h1>
-        <h2>Welcome dear {{ user.username }}
+        <h2 >Welcome dear {{ user.username }}
         <h3>Your Borrow Books :</h3>
         <ol>
             {% for borrow in borrows %}
