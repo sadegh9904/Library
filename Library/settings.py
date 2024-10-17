@@ -153,7 +153,7 @@ CELERY_BEAT_SCHEDULE = {
         "task": 
         "book_store.tasks.check_books", 
         "schedule" : crontab(
-            hour = 0, minute = 0)
+            hour = 6, minute = 0)
     }
 }
 
