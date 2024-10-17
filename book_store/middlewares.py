@@ -18,12 +18,8 @@ class LoginMiddlawere:
         if match:
             pk = match.group(1)
 
-        if request.user.is_authenticated and request.path == reverse('login'):
-            print(f"Authenticated user {request.user.username} trying to access login page. Redirecting to book-list.")
-            return redirect('book-list')
         checklist = [
             reverse('add-book'),
-            reverse('book-list'),
             reverse('edit-book',args=[pk]),
             reverse('delete-book', args=[pk]),
 
@@ -32,7 +28,6 @@ class LoginMiddlawere:
 
         customusers = [
             reverse('profile-user'),
-            reverse('book-list'),
             reverse('book-borrow', args=[pk]),
         ]
 
