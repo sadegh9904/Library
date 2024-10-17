@@ -10,9 +10,9 @@ class LoginMiddlawere:
     def __call__(self, request):
         pk = "4"
         match = "11"
-        match = re.search(r"\/(\d+)\/", request.path)
+        match = re.search(r"\/(\d+)\/", request.path) #searching int between /  / for example : /11/
         if match:
-            pk = match.group(1)
+            pk = match.group(1) #we have just one group :(/d+)
 
 
 #The list of routes(paths) that only superusrs have access to
