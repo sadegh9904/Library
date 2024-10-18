@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+from datetime import datetime
 from django.template.defaultfilters import slugify #for error adding book , we must make sure that the slug isn't duplicated!
 # Create your models here.
 
@@ -35,8 +36,8 @@ class Book(models.Model):
 class Borrow(models.Model):
     user = models.ForeignKey(CustomUser, verbose_name=("user"), on_delete=models.CASCADE)
     book = models.ForeignKey(Book, verbose_name=("book"), on_delete=models.CASCADE)
-    borrow_date = models.DateField(auto_now_add=True)
-    return_date = models.DateField(null=True, blank=True)
+    borrow_date = models.DateTimeField(auto_now_add=True)
+    return_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.user.name} borrowed {self.book.title}"
@@ -53,3 +54,5 @@ class Borrow(models.Model):
             if late_days > 0 :
                 self.user.balance -= late_days
                 self.user.save()
+
+
