@@ -11,7 +11,9 @@
     <div id="welcome">
         <h1>profile user</h1>
         <h2 >Welcome dear {{ user.username }}
+        <h3> Balance : {{ user.balance }}</h3>
         <h3>Your Borrow Books :</h3>
+        
         <ol>
             {% for borrow in borrows %}
                 <li>

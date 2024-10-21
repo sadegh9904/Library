@@ -1,5 +1,5 @@
 body {
-    background-color: #e7e7e7;
+    background-color: rgb(97, 24, 2);
 }
 
 #all-books {
@@ -50,4 +50,35 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
     gap: 5.5rem;
+}
+
+.profile {
+    text-align: center;
+    text-decoration: wavy;
+    color: #000000;
+    font-size: 2rem;
+    max-width: 20%;
+    margin: 2rem auto;
+    padding: 0.5rem ;
+    border-radius: 12px;
+    background-color:#75df64;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    display: inline;
+    margin-top: 5rem;
+}
+
+.new-book{
+    text-align: center;
+    text-decoration: wavy;
+    color: #000000;
+    font-size: 2rem;
+    max-width: 20%;
+    margin: 2rem auto;
+    padding: 0.5rem ;
+    border-radius: 12px;
+    background-color:#75df64;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    display: inline;
 }

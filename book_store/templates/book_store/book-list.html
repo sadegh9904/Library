@@ -18,7 +18,7 @@
             <h3>
                 welcome dear {{user.username}}
             </h3>
-            <strong><a href="{% url "profile-user" %}">Your Profile</a><br/></strong>
+            <a class="profile" href="{% url "profile-user" %}">Your Profile</a><br/>
         {% else %}
                     
         <strong><a href="{% url "signup" %}">Signup</a><br/></strong>
@@ -27,7 +27,7 @@
 
         {% if user.is_superuser %}
 
-            <a href="{% url "add-book" %}">Add New Book</a>
+            <a class="new-book" href="{% url "add-book" %}">Add New Book</a>
 
         {% endif %}
         <ul>
