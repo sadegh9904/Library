@@ -40,7 +40,7 @@ class Borrow(models.Model):
     return_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.user.name} borrowed {self.book.title}"
+        return f"{self.user.first_name} borrowed {self.book.title}"
     
     def return_book(self):
         self.return_date = timezone.now()

@@ -4,3 +4,4 @@ from.models import Book, Borrow,CustomUser
 
 admin.site.register(Book)
 admin.site.register(CustomUser)
+admin.site.register(Borrow)
