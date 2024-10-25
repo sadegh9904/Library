@@ -10,7 +10,7 @@ from email.message import EmailMessage
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "mohammadsadeghsherbaf@gmail.com"
 EMAIL_HOST_PORT = 465 
-EMAIL_HOST_PASSWORD = "qvhszprjfmbinmrd"
+EMAIL_HOST_PASSWORD = "a"
 
 
 @shared_task
